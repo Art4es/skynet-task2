@@ -1,3 +1,4 @@
 <?php
 
-echo 'Hello world!';
+chdir(dirname(__DIR__));
+require_once 'autoload.php';
