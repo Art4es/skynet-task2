@@ -7,5 +7,5 @@ use Skynet\http\IResponse;
 
 interface IAction
 {
-    public function run($params = []): IResponse;
+    public function run(): IResponse;
 }
