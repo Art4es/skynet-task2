@@ -14,9 +14,10 @@ class TarifsAction extends Action
 {
     public function run(): IResponse
     {
-        $service_id = $this->params['service_id'];
-        $user_id = $this->params['user_id'];
         try {
+            $service_id = $this->params['service_id'];
+            $user_id = $this->params['user_id'];
+
             $services = ServiceRepository::getByIdAndUserId($service_id, $user_id);
 
             $result = [];

@@ -13,6 +13,8 @@ chdir(dirname(__DIR__));
 require_once 'autoload.php';
 require_once 'db_cfg.php';
 
+date_default_timezone_set('Europe/Moscow');
+
 $request = new Request();
 
 $router = new Router();
@@ -38,7 +40,6 @@ try {
 } catch (NotFoundException $e) {
     $response = new Response('', 404);
 }
-
 
 $sender = new ResponseSender();
 $sender->send($response);

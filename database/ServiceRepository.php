@@ -13,7 +13,7 @@ class ServiceRepository
      * @param $user_id
      * @return Service[]
      */
-    public static function getByIdAndUserId($service_id, $user_id)
+    public static function getByIdAndUserId($service_id, $user_id): array
     {
         $query = <<<SQL
         select * from services
@@ -26,5 +26,16 @@ SQL;
             $services[] = new Service($row);
         }
         return $services;
+    }
+
+    public static function update(Service $service): bool
+    {
+        $query = <<<SQL
+        update services set 
+        tarif_id = {$service->tarif_id}, 
+        payday = '{$service->payday}'
+        where ID = {$service->id}
+SQL;
+        return DB::getConnection()->prepare($query)->execute();
     }
 }

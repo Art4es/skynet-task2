@@ -25,11 +25,16 @@ class Tarif
         $this->tarif_group_id = isset($data['tarif_group_id']) ? intval($data['tarif_group_id']) : null;
     }
 
-    public function getNewPayday()
+    public function getNewPayDate(): \DateTimeImmutable
     {
         $current_date = new \DateTimeImmutable();
         $current_midnight = $current_date->setTime(0, 0, 0, 0);
-        $current_midnight->add(new \DateInterval("P{$this->pay_period}M"));
+        return $current_midnight->add(new \DateInterval("P{$this->pay_period}M"));
+    }
+
+    public function getNewPayday(): string
+    {
+        $current_midnight = $this->getNewPayDate();
         return $current_midnight->getTimestamp() . $current_midnight->format('O');
     }
 
