@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Skynet\models;
+namespace Skynet\actions;
 
 
 use Skynet\http\IResponse;
-use Skynet\http\JsonResponse;
+use Skynet\http\Response;
 
 class TarifAction extends Action
 {
@@ -13,6 +13,6 @@ class TarifAction extends Action
     {
         $post_data = $this->request->getParsedBody();
         print_r($post_data);
-        return new JsonResponse($post_data);
+        return new Response($post_data);
     }
 }

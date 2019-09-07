@@ -11,13 +11,19 @@ class Response implements IResponse
     private $message = '';
 
     private static $statuses = [
-        200 => 'OK'
+        200 => 'OK',
+        404 => 'Not Found'
     ];
 
     public function __construct($body, $status = 200)
     {
         $this->body = $body;
         $this->statusCode = $status;
+    }
+
+    public function getProtocolVersion()
+    {
+        return '1.1';
     }
 
     public function getBody()
@@ -30,9 +36,6 @@ class Response implements IResponse
         return $this->statusCode;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         if (!isset($this->message) && !isset(self::$statuses[$this->statusCode])) {

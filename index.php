@@ -1,13 +1,17 @@
 <?php
 
+use Skynet\exceptions\NotFoundException;
 use Skynet\http\Request;
+use Skynet\http\Response;
+use Skynet\http\ResponseSender;
 use Skynet\http\Route;
 use Skynet\http\Router;
-use Skynet\models\TarifAction;
-use Skynet\models\TarifsAction;
+use Skynet\actions\TarifAction;
+use Skynet\actions\TarifsAction;
 
 chdir(dirname(__DIR__));
 require_once 'autoload.php';
+require_once 'db_cfg.php';
 
 $request = new Request();
 
@@ -27,6 +31,15 @@ $router->addRoute(new Route(
     ['user_id' => '\\d+', 'service_id' => '\\d+']
 ));
 
-$action = $router->match($request);
 
-echo $action->run()->getBody();
+try {
+    $action = $router->match($request);
+    $response = $action->run();
+} catch (NotFoundException $e) {
+    $response = new Response('', 404);
+}
+
+
+$sender = new ResponseSender();
+$sender->send($response);
+

@@ -4,7 +4,7 @@
 namespace Skynet\http;
 
 
-use Skynet\models\IAction;
+use Skynet\actions\IAction;
 
 interface IRouter
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Skynet\models;
+namespace Skynet\actions;
 
 
 use Skynet\http\IResponse;

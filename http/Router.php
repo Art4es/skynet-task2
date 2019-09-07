@@ -4,7 +4,8 @@
 namespace Skynet\http;
 
 
-use Skynet\models\IAction;
+use Skynet\actions\IAction;
+use Skynet\exceptions\NotFoundException;
 
 class Router implements IRouter
 {
@@ -34,7 +35,7 @@ class Router implements IRouter
                 return new $action_class($request, $params);
             }
         }
-        exit();
+        throw new NotFoundException();
     }
 
     public function addRoute(IRoute $route)
