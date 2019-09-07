@@ -21,7 +21,7 @@ class Response implements IResponse
         $this->statusCode = $status;
     }
 
-    public function getProtocolVersion()
+    public function getProtocolVersion(): string
     {
         return '1.1';
     }

@@ -38,7 +38,7 @@ class Tarif
         return $current_midnight->getTimestamp() . $current_midnight->format('O');
     }
 
-    public function shortArrayView()
+    public function shortArrayView(): array
     {
         return [
             'title' => $this->title,
@@ -47,7 +47,7 @@ class Tarif
         ];
     }
 
-    public function extendedArrayView()
+    public function extendedArrayView(): array
     {
         return [
             'ID' => $this->id,

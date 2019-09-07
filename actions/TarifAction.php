@@ -8,7 +8,6 @@ use Skynet\database\ServiceRepository;
 use Skynet\database\TarifRepository;
 use Skynet\http\IResponse;
 use Skynet\http\JsonResponse;
-use Skynet\http\Response;
 
 class TarifAction extends Action
 {

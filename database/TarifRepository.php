@@ -30,7 +30,7 @@ SQL;
      * @param $tarif_group_id
      * @return Tarif[]
      */
-    public static function getByGroupId($tarif_group_id)
+    public static function getByGroupId($tarif_group_id): array
     {
         $query = <<<SQL
         select * from tarifs

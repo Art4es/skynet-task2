@@ -4,8 +4,6 @@
 namespace Skynet\http;
 
 
-use Skynet\models\IAction;
-
 interface IRoute
 {
     public function getMethod(): string;
