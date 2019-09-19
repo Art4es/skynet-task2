@@ -9,6 +9,7 @@ class Response implements IResponse
     private $body;
     private $statusCode;
     private $message = '';
+    private $headers = [];
 
     private static $statuses = [
         200 => 'OK',
@@ -44,4 +45,13 @@ class Response implements IResponse
         return $this->message;
     }
 
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function withHeaders(array $header)
+    {
+        $this->headers = array_merge($this->headers, $header);
+    }
 }

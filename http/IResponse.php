@@ -11,4 +11,8 @@ interface IResponse
     public function getStatusCode(): int;
 
     public function getMessage(): string;
+
+    public function getHeaders(): array;
+
+    public function withHeaders(array $header);
 }

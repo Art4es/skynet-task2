@@ -13,6 +13,9 @@ class ResponseSender
             . ' ' . $response->getStatusCode()
             . ' ' . $response->getMessage()
         );
+        foreach ($response->getHeaders() as $header_name => $header_value) {
+            header($header_name . ':' . $header_value);
+        }
         echo $response->getBody();
     }
 }
